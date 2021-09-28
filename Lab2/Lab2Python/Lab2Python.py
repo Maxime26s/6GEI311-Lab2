@@ -1,6 +1,7 @@
 import Lab2
 import threading
 
+# Gère et envoie les entrées clavier
 def keyboard_manager():
     while True:
         char = str(input()).lower()
@@ -10,6 +11,7 @@ def keyboard_manager():
             if char == 'q':
                 break
 
+# Initialise les threads du clavier et de la vidéo
 def main():
     print("Entrer dans la console le path de la vidéo ou appuyer sur ENTER pour la vidéo par défaut")
     path = str(input())

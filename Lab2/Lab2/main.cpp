@@ -1,10 +1,11 @@
 #include <dshow.h>
+#include <Python.h>
 #include "playback.h"
 
-#include <Python.h>
-
+// Variable pour contrôler le vidéo player
 DShowPlayer* g_pPlayer = NULL;
 
+// Gère les entrées claviers reçues
 void ManageInput(char ch) {
 	switch (ch)
 	{
@@ -35,6 +36,7 @@ void ManageInput(char ch) {
 	}
 }
 
+// Fonction python pour initialiser la vidéo
 static PyObject* initPlayer(PyObject* self, PyObject* args)
 {
 	g_pPlayer = new (std::nothrow) DShowPlayer(PyUnicode_AsUTF8(args));
@@ -44,6 +46,7 @@ static PyObject* initPlayer(PyObject* self, PyObject* args)
 	return python_val;
 }
 
+// Fonction python pour envoyer les entrées claviers
 static PyObject* sendInput(PyObject* self, PyObject* args)
 {
 	ManageInput(*PyUnicode_AsUTF8(args));
@@ -52,12 +55,14 @@ static PyObject* sendInput(PyObject* self, PyObject* args)
 	return python_val;
 }
 
+// Définition des fonctions de la librairie
 static PyMethodDef VideoPlayerMethods[] = {
 	{"initPlayer", (PyCFunction)initPlayer, METH_O, "Shows the video player."},
 	{"sendInput", (PyCFunction)sendInput, METH_O, "Sends input to the video player."},
 	{nullptr, nullptr, 0, nullptr}        /* Sentinel */
 };
 
+// Définition du module
 static struct PyModuleDef videoplayermodule = {
 	PyModuleDef_HEAD_INIT,
 	"Lab2",   /* name of module */
@@ -67,6 +72,7 @@ static struct PyModuleDef videoplayermodule = {
 	VideoPlayerMethods
 };
 
+// Initialise le module
 PyMODINIT_FUNC PyInit_Lab2(void)
 {
 	return PyModule_Create(&videoplayermodule);

@@ -1,5 +1,6 @@
 #include "playback.h"
 
+// Constructeur
 DShowPlayer::DShowPlayer(std::string filePath) :
     m_state(STATE_NO_GRAPH),
     m_pGraph(NULL),
@@ -77,6 +78,7 @@ HRESULT DShowPlayer::FastForward()
     double rate;
     m_pPosition->get_Rate(&rate);
 
+    // Change la vitesse de la vidéo ( 1 -> 1.5 -> 2 -> 1 )
     rate = rate == 1 ? 1.5 : rate == 1.5 ? 2 : 1;
 
     HRESULT hr = m_pPosition->put_Rate(rate);
@@ -89,6 +91,7 @@ HRESULT DShowPlayer::Back()
     return hr;
 }
 
+// Convertie un string en wstring
 std::wstring DShowPlayer::StrToWStr(const std::string& s)
 {
     int len;
