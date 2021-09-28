@@ -20,12 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playback.h" />
-    <ClInclude Include="video.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="playback.cpp" />
-    <ClCompile Include="video.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -90,8 +88,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\msimard104\AppData\Local\Programs\Python\Python39\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>C:\Users\msimard104\AppData\Local\Programs\Python\Python39\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>C:\Users\Maxime\AppData\Local\Programs\Python\Python39\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>C:\Users\Maxime\AppData\Local\Programs\Python\Python39\libs;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
     <TargetExt>.pyd</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
